@@ -1,14 +1,15 @@
 #!/usr/bin/lua
 
 local function usage(fh)
-	fh:write( ("%s: <mod-dir> <file>\n"):format(args[0]) )
+	fh:write( ("%s: <prefix> <file>\n"):format(args[0]) )
 	fh:write( "\n" )
 	fh:write( "Normalizes the intra-mod require calls to '.' as a separator.\n" )
+	fh:write( "the 'prefix' parameter is the name of the mod's private scripts/ subdirectory.\n" )
 end
 
-local mod_dir, file = ...
+local prefix, file = ...
 
-assert( mod_dir )
+assert( prefix )
 assert( file )
 
 local function slurpFile()
@@ -43,7 +44,7 @@ local function processString(str)
 
 	local MYSEP = "/"
 
-	if os.execute( ("test -d %s/scripts/%s"):format(mod_dir, pieces[1]) ) then
+	if pieces[1] == prefix then
 		MYSEP = "."
 	end
 
