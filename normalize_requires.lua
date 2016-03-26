@@ -9,6 +9,11 @@ end
 
 local prefix, file = ...
 
+if not (prefix and file) then
+	usage(io.stderr)
+	os.exit(1)
+end
+
 assert( prefix )
 assert( file )
 
