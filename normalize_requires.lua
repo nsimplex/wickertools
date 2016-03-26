@@ -1,7 +1,7 @@
 #!/usr/bin/lua
 
 local function usage(fh)
-	fh:write( ("%s: <prefix> <file>\n"):format(args[0]) )
+	fh:write( ("%s: <prefix> <file>\n"):format(arg[0]) )
 	fh:write( "\n" )
 	fh:write( "Normalizes the intra-mod require calls to '.' as a separator.\n" )
 	fh:write( "the 'prefix' parameter is the name of the mod's private scripts/ subdirectory.\n" )
